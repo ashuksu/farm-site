@@ -1,14 +1,9 @@
 // ====== DATA ======
-const products = [
-    {id: 1, name: "Помидоры", price: 120, img: "https://images.unsplash.com/photo-1561136594-7f68413baa99"},
-    {id: 2, name: "Картофель", price: 60, img: "https://images.unsplash.com/photo-1698505949250-51f8b2c9c8c6"},
-    {id: 3, name: "Молоко", price: 90, img: "https://images.unsplash.com/photo-1632200823229-376320621350"},
-    {id: 4, name: "Яйца", price: 150, img: "https://images.unsplash.com/photo-1587486913049-53fc88980cfc"},
-    {id: 5, name: "Мёд", price: 300, img: "https://images.unsplash.com/photo-1613548058193-1cd24c1bebcf"},
-    {id: 6, name: "Сыр", price: 250, img: "https://images.unsplash.com/photo-1559561853-08451507cbe7"}
-];
-
+let products = [];
 let cart = [];
+
+const API_URL = "https://directus-production-d1db.up.railway.app";
+const FALL_BACK_IMAGE = "./fallback.jpg";
 
 // ====== ELEMENTS ======
 const elements = {
@@ -24,7 +19,8 @@ const elements = {
 };
 
 // ====== INIT ======
-function init() {
+async function init() {
+    await loadProducts();
     renderProducts();
     bindEvents();
 }
@@ -128,6 +124,31 @@ function renderCartModal() {
 
     const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
     elements.cartTotal.innerText = total + " kr";
+}
+
+async function loadProducts() {
+    try {
+        const res = await fetch(`${API_URL}/items/products`);
+
+        if (!res.ok) {
+            throw new Error("Ошибка запроса: " + res.status);
+        }
+
+        const json = await res.json();
+        console.log("DATA:", json);
+
+        products = json.data.map(p => ({
+            id: p.id,
+            name: p.title,
+            price: p.price,
+            img: p.image
+                ? `${API_URL}/assets/${p.image}?width=400&format=webp`
+                : FALL_BACK_IMAGE
+        }));
+
+    } catch (err) {
+        console.error("Ошибка загрузки товаров:", err);
+    }
 }
 
 // ====== BUY ======

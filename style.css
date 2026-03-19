@@ -1,3 +1,19 @@
+:root {
+    --main-grid-template-columns: 1;
+}
+
+@media only screen and (min-width: 480px) {
+    :root {
+        --main-grid-template-columns: 2;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    :root {
+        --main-grid-template-columns: 3;
+    }
+}
+
 html {
     box-sizing: border-box;
     font-size: 8px;
@@ -34,14 +50,16 @@ body {
 }
 
 footer {
+    width: 100%;
     background: #ccc;
-    position: sticky;
+    position: fixed;
+    left: 0;
     bottom: 0;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 main {
-    padding-block: 15px;
+    padding-block: 15px 50px;
 }
 
 .container {
@@ -53,7 +71,7 @@ main {
 
 .products {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(var(--main-grid-template-columns), 1fr);
     gap: 10px;
 }
 

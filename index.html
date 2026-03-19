@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Фермерская лавка</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,27 +18,33 @@
 </header>
 
 <main class="main">
-    <div class="products" id="products"></div>
+    <div class="container">
+        <div class="products" id="products"></div>
+    </div>
 </main>
 
 <footer class="footer">
-    <div id="cart">
-        <span id="count">0 товаров</span>
-        <span id="total">0 ₽</span>
+    <div class="container">
+        <div id="cart" class="cart">
+            <span id="count">0 товаров</span>
+            <span id="total">0 kr</span>
+        </div>
     </div>
 </footer>
 
 <div id="cart-modal" class="cart-modal hidden" hidden>
-    <div class="cart-content">
-        <h2>Корзина</h2>
+    <div class="container">
+        <div class="cart-content">
+            <h2>Корзина</h2>
 
-        <div id="cart-items"></div>
+            <div id="cart-items"></div>
 
-        <div class="cart-summary">
-            <strong id="cart-total-modal">0 kr</strong>
+            <div class="cart-summary">
+                <strong id="cart-total-modal">0 kr</strong>
+            </div>
+
+            <button id="buy-btn">Купить</button>
         </div>
-
-        <button id="buy-btn">Купить</button>
     </div>
 </div>
 

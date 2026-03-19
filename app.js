@@ -12,6 +12,7 @@ let cart = [];
 
 // ====== ELEMENTS ======
 const elements = {
+    header: document.getElementById("header"),
     products: document.getElementById("products"),
     cart: document.getElementById("cart"),
     modal: document.getElementById("cart-modal"),
@@ -30,6 +31,11 @@ function init() {
 
 // ====== EVENTS ======
 function bindEvents() {
+    // скролл страницы
+    window.addEventListener('scroll', () => {
+        elements.header.classList.toggle('scrolled', window.scrollY > 120);
+    });
+
     // открыть корзину
     elements.cart.addEventListener("click", openCart);
 

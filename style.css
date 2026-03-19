@@ -46,7 +46,34 @@ body {
     position: sticky;
     top: 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 1px 0;
+    padding-block: 10px;
+    height: var(--header-height, 100px);
+    transition: height 0.3s ease, background-color 0.3s ease;
+    overflow: hidden;
+}
+
+.header.scrolled {
+    --header-height: 65px;
+
+    background-color: rgba(46, 125, 50, 0.9);
+}
+
+@media only screen and (min-width: 768px) {
+    header {
+        --header-height: 115px;
+    }
+
+    .header.scrolled {
+        --header-height: 70px;
+    }
+}
+
+.header__title {
+    margin: 0 0 10px;
+}
+
+.header__text {
+    margin: 0;
 }
 
 footer {

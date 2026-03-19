@@ -132,7 +132,7 @@ function renderCartModal() {
 
 async function loadProducts() {
     try {
-        const res = await fetch(`${API_URL}/items/products`);
+        const res = await fetch(`${API_URL}/items/products?filter[visible][_eq]=true`);
 
         if (!res.ok) {
             throw new Error("Ошибка запроса: " + res.status);
@@ -141,14 +141,16 @@ async function loadProducts() {
         const json = await res.json();
         //console.log("DATA:", json);
 
-        products = json.data.map(p => ({
-            id: p.id,
-            name: p.title,
-            price: Number(p.price.toFixed(2)),
-            img: p.image
-                ? `${API_URL}/assets/${p.image}?width=400&format=webp`
-                : FALL_BACK_IMAGE
-        }));
+        products = json.data
+            .filter(p => p.visible === true || p.visible === 1)
+            .map(p => ({
+                id: p.id,
+                name: p.title,
+                price: Number(p.price.toFixed(2)),
+                img: p.image
+                    ? `${API_URL}/assets/${p.image}?width=400&format=webp`
+                    : FALL_BACK_IMAGE
+            }));
 
     } catch (err) {
         console.error("Ошибка загрузки товаров:", err);

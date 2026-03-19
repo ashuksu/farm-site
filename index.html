@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фермерская лавка</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container">
+        <h1>🌿 Фермерская лавка</h1>
+        <p>Свежие продукты каждый день</p>
+    </div>
+</header>
+
+<main class="main">
+    <div class="products" id="products"></div>
+</main>
+
+<footer class="footer">
+    <div id="cart">
+        <span id="count">0 товаров</span>
+        <span id="total">0 ₽</span>
+    </div>
+</footer>
+
+<div id="cart-modal" class="cart-modal hidden" hidden>
+    <div class="cart-content">
+        <h2>Корзина</h2>
+
+        <div id="cart-items"></div>
+
+        <div class="cart-summary">
+            <strong id="cart-total-modal">0 kr</strong>
+        </div>
+
+        <button id="buy-btn">Купить</button>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

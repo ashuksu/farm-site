@@ -7,7 +7,65 @@ const products = [
     {id: 6, name: "Сыр", price: 250, img: "https://images.unsplash.com/photo-1559561853-08451507cbe7"}
 ];
 
+const cartEl = document.getElementById("cart");
+const modal = document.getElementById("cart-modal");
+
 let cart = [];
+
+// Клик по корзине
+cartEl.addEventListener("click", () => {
+    renderCartModal();
+    modal.classList.remove("hidden");
+});
+
+// Закрытие по клику вне
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.classList.add("hidden");
+    }
+});
+
+// Рендер корзины
+function renderCartModal() {
+    const container = document.getElementById("cart-items");
+    container.innerHTML = "";
+
+    cart.forEach(item => {
+        const el = document.createElement("div");
+        el.className = "cart-item";
+
+        el.innerHTML = `
+            <span>${item.name} x${item.qty}</span>
+            <span>${item.price * item.qty} kr</span>
+        `;
+
+        container.appendChild(el);
+    });
+
+    const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+    document.getElementById("cart-total-modal").innerText = total + " kr";
+}
+
+// Кнопка "Купить"
+document.getElementById("buy-btn").addEventListener("click", () => {
+    if (cart.length === 0) {
+        alert("Корзина пуста");
+        return;
+    }
+
+    const text = cart
+        .map(i => `${i.name} x${i.qty}`)
+        .join(", ");
+
+    const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+
+    alert(`Вы заказали:\n${text}\n\nСумма: ${total} kr`);
+
+    // очистка
+    cart = [];
+    updateCart();
+    modal.classList.add("hidden");
+});
 
 function renderProducts() {
     const container = document.getElementById("products");

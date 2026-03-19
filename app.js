@@ -3,7 +3,7 @@ let products = [];
 let cart = [];
 
 const API_URL = "https://directus-production-d1db.up.railway.app";
-const FALL_BACK_IMAGE = "./fallback.jpg";
+const FALL_BACK_IMAGE = "/fallback.jpg";
 
 // ====== ELEMENTS ======
 const elements = {
@@ -55,7 +55,11 @@ function renderProducts() {
         el.className = "card";
 
         el.innerHTML = `
-            <img class="image" src="${product.img}" loading="lazy" alt="${product.name}">
+            <img class="image"
+                 src="${product.img}"
+                 loading="lazy"
+                 alt="${product.name}"
+                 onerror="this.src='${FALL_BACK_IMAGE}'">
             <h3>${product.name}</h3>
             <div class="price">${product.price} kr</div>
             <button class="button">Добавить</button>
@@ -135,12 +139,12 @@ async function loadProducts() {
         }
 
         const json = await res.json();
-        console.log("DATA:", json);
+        //console.log("DATA:", json);
 
         products = json.data.map(p => ({
             id: p.id,
             name: p.title,
-            price: p.price,
+            price: Number(p.price.toFixed(2)),
             img: p.image
                 ? `${API_URL}/assets/${p.image}?width=400&format=webp`
                 : FALL_BACK_IMAGE

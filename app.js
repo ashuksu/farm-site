@@ -58,8 +58,7 @@ function renderProducts() {
             <img class="image"
                  src="${product.img}"
                  loading="lazy"
-                 alt="${product.name}"
-                 onerror="this.src='${FALL_BACK_IMAGE}'">
+                 alt="${product.name}">
             <h3>${product.name}</h3>
             <div class="price">${product.price} kr</div>
             <button class="button">Добавить</button>

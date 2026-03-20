@@ -3,7 +3,7 @@ let products = [];
 let cart = [];
 
 const API_URL = "https://directus-production-d1db.up.railway.app";
-const FALL_BACK_IMAGE = "/fallback.jpg";
+const FALL_BACK_IMAGE = "fallback.jpg";
 
 // ====== ELEMENTS ======
 const elements = {

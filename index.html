@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Фермерская лавка</title>
+    <title>Farmer's Shop</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,8 +12,8 @@
 
 <header id="header" class="header">
     <div class="container">
-        <h1 class="header__title">🌿 Фермерская лавка</h1>
-        <p class="header__text">Свежие продукты каждый день</p>
+        <h1 class="header__title">🌿 Farmer's Shop</h1>
+        <p class="header__text">Fresh produce every day</p>
     </div>
 </header>
 
@@ -26,7 +26,7 @@
 <footer class="footer">
     <div class="container">
         <div id="cart" class="cart">
-            <span id="count">0 товаров</span>
+            <span id="count">0 products</span>
             <span id="total">0 kr</span>
         </div>
     </div>
@@ -35,7 +35,7 @@
 <div id="cart-modal" class="cart-modal hidden" hidden>
     <div class="container">
         <div class="cart-content">
-            <h2>Корзина</h2>
+            <h2>Cart</h2>
 
             <div id="cart-items"></div>
 
@@ -43,11 +43,11 @@
                 <strong id="cart-total-modal">0 kr</strong>
             </div>
 
-            <button id="buy-btn">Купить</button>
+            <button id="buy-btn">Buy</button>
         </div>
     </div>
 </div>
 
-<script src="app.js"></script>
+<script type="module" src="src/main.js"></script>
 </body>
 </html>

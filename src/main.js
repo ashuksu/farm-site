@@ -1,5 +1,5 @@
-import {initHomePage, updateCartUI} from "./pages/homePage.js";
-import {clearCart, getCart} from "./store/cartStore.js";
+import {initHomePage, updateCartUI, refreshAll} from "./pages/homePage.js";
+import {clearCart, getCart, updateQty, removeFromCart, getTotals} from "./store/cartStore.js";
 
 const elements = {
     header: document.getElementById("header"),
@@ -36,10 +36,12 @@ function bindEvents() {
 function openCart() {
     renderCart();
     elements.modal.classList.remove("hidden");
+    elements.modal.hidden = false;
 }
 
 function closeCart() {
     elements.modal.classList.add("hidden");
+    elements.modal.hidden = true;
 }
 
 function renderCart() {
@@ -54,40 +56,71 @@ function renderCart() {
     }
 
     cart.forEach(item => {
-        const el = document.createElement("div");
-        el.className = "cart-item";
-
-        el.innerHTML = `
-            <span>${item.name} x${item.qty}</span>
-            <span>${item.price * item.qty} kr</span>
+        const row = document.createElement("div");
+        row.className = "cart-row";
+        row.innerHTML = `
+            <div class="cart-row__visible" style="cursor: pointer; padding: 10px; border-bottom: 1px solid #eee;">
+                <span>${item.name} x${item.qty}</span>
+                <span style="float: right;">${item.price * item.qty} kr</span>
+            </div>
+            <div class="cart-row__details hidden" hidden style="padding: 10px; background: #f9f9f9; display: flex; gap: 10px; align-items: center;">
+                <button class="btn-remove" style="background: none; border: 1px solid red; color: red;">X</button>
+                <button class="btn-m">-</button>
+                <span class="qty-val">${item.qty}</span>
+                <button class="btn-p">+</button>
+            </div>
         `;
 
-        elements.cartItems.appendChild(el);
+        row.querySelector(".cart-row__visible").onclick = () => {
+            row.querySelector(".cart-row__details").classList.toggle("hidden");
+        };
+
+        row.querySelector(".btn-m").onclick = () => {
+            updateQty(item.id, -1);
+            sync();
+        };
+        row.querySelector(".btn-p").onclick = () => {
+            updateQty(item.id, 1);
+            sync();
+        };
+        row.querySelector(".btn-remove").onclick = () => {
+            removeFromCart(item.id);
+            sync();
+        };
+
+        elements.cartItems.appendChild(row);
     });
 
-    const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    const {total} = getTotals();
     elements.cartTotal.innerText = total + " kr";
+}
+
+function sync() {
+    renderCart();
+    // updateCartUI(elements);
+    refreshAll(elements);
+    // Для полной синхронизации кнопок на главной можно вызвать initHomePage или использовать CustomEvents
 }
 
 function handleBuy() {
     const cart = getCart();
+    if (!cart.length) return;
 
-    if (!cart.length) {
-        alert("The Cart is empty");
-        return;
-    }
+    // const text = cart
+    //     .map(i => `${i.name} x${i.qty}`)
+    //     .join(", ");
+    //
+    // const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    // alert(`You ordered:\n${text}\n\nAmount: ${total} kr`);
 
-    const text = cart
-        .map(i => `${i.name} x${i.qty}`)
-        .join(", ");
+    const params = cart.map(i => `item=${i.id}&q=${i.qty}`).join('&');
+    const deepLink = `myapp://checkout?${params}`;
 
-    const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    alert(`Deep Link:\n${deepLink}`);
 
-    alert(`You ordered:\n${text}\n\nAmount: ${total} kr`);
-
-    clearCart();
-    updateCartUI(elements);
-    closeCart();
+    // clearCart();
+    // sync();
+    // closeCart();
 }
 
 init();

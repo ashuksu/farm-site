@@ -1,0 +1,6 @@
+@import "./layout/footer.css";
+
+@import "./components/card.css";
+@import "./components/buttons.css";
+@import "./components/cart.css";
+@import "./components/modal.css";

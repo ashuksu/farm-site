@@ -4,9 +4,9 @@ export function createProductCard(product, onAdd) {
 
     el.innerHTML = `
         <img 
-            class="image" 
-            src="${product.img}" 
-            loading="lazy" 
+            class="image"
+            src="${product.img}"
+            loading="lazy"
             alt="${product.name}">
         <h3>${product.name}</h3>
         <div class="price">${product.price} kr</div>

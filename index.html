@@ -4,26 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Farmer's Shop</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Farmer's Market</title>
+
+    <link rel="stylesheet" href="styles/critical.css">
+    <link rel="preload" href="styles/main.css" as="style" onload="this.rel='stylesheet'" fetchpriority="low">
+    <noscript>
+        <link rel="stylesheet" href="styles/main.css">
+    </noscript>
+    <link rel="preload" href="styles/pages/home.css" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="styles/pages/home.css">
+    </noscript>
 </head>
 
 <body>
 
 <header id="header" class="header">
     <div class="container">
-        <h1 class="header__title">🌿 Farmer's Shop</h1>
+        <div class="header__row">
+            <a href="/" class="logo">🌿</a>
+            <h1 class="header__title">Farmer's Market</h1>
+        </div>
         <p class="header__text">Fresh produce every day</p>
     </div>
 </header>
 
 <main class="main">
+    <section id="main-banner" data-banner-bg-image class="main-banner">
+        <div class="container">
+            <div class="main-banner__inner">
+                <p data-banner-title class="main-banner__title"></p>
+                <p data-banner-text class="main-banner__text"></p>
+                <a href="#" data-banner-url data-banner-button class="button main-banner__button"></a>
+            </div>
+        </div>
+    </section>
+
     <div class="container">
-        <div class="products" id="products"></div>
+        <div id="products" class="products"></div>
     </div>
 </main>
 
-<footer class="footer">
+<footer id="footer" class="footer">
     <div class="container">
         <div id="cart" class="cart">
             <span id="count">0 products</span>
@@ -43,7 +65,7 @@
                 <strong id="cart-total-modal">0 kr</strong>
             </div>
 
-            <button id="buy-btn">Buy</button>
+            <button id="buy-btn" class="button">Buy</button>
         </div>
     </div>
 </div>

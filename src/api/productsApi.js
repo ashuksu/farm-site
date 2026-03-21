@@ -5,7 +5,8 @@ export async function fetchProducts() {
         const res = await fetch(`${API_URL}/items/products?filter[visible][_eq]=true`);
 
         if (!res.ok) {
-            throw new Error("API error: " + res.status);
+            console.error("Products API error: " + res.status);
+            return null;
         }
 
         const json = await res.json();
@@ -22,5 +23,6 @@ export async function fetchProducts() {
             }));
     } catch (err) {
         console.error("Error loading products:", err);
+        return null;
     }
 }

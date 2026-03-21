@@ -1,0 +1,16 @@
+.cart-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.cart-content {
+    background: white;
+    max-height: 70%;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding: 1.5rem;
+    overflow-y: auto;
+}

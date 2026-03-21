@@ -1,0 +1,14 @@
+.button {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: .8rem;
+    border-radius: var(--radius-sm);
+    width: 100%;
+}
+
+#buy-btn {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 1rem;
+}

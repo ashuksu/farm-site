@@ -1,8 +1,9 @@
 import {initHomePage, updateCartUI} from "./pages/homePage.js";
-import {getCart, clearCart} from "./store/cartStore.js";
+import {clearCart, getCart} from "./store/cartStore.js";
 
 const elements = {
     header: document.getElementById("header"),
+    banner: document.getElementById("main-banner"),
     products: document.getElementById("products"),
     cart: document.getElementById("cart"),
     modal: document.getElementById("cart-modal"),

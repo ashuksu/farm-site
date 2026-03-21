@@ -1,15 +1,6 @@
-@import "./base/variables.css";
-@import "./base/general.css";
-
-@import "./layout/common.css";
-@import "./layout/header.css";
 @import "./layout/footer.css";
 
 @import "./components/card.css";
 @import "./components/buttons.css";
 @import "./components/cart.css";
 @import "./components/modal.css";
-
-@import "./pages/home.css";
-
-@import "./utils/helpers.css";

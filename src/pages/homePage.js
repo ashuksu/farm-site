@@ -1,38 +1,25 @@
 import {fetchProducts} from "../api/productsApi.js";
-import {createProductCard} from "../components/productCard.js";
-import {addToCart, getTotals} from "../store/cartStore.js";
 import {fetchBanners} from "../api/bannersApi.js";
+import {createProductCard} from "../components/productCard.js";
 import {renderBanner} from "../components/banner.js";
+import {addToCart, updateQty, getTotals} from "../store/cartStore.js";
 
 export async function initHomePage(elements) {
-    const [banners, products] = await Promise.all([
-        fetchBanners(),
-        fetchProducts()
-    ]);
+    const [banners, products] = await Promise.all([fetchBanners(), fetchProducts()]);
 
-    // banner
-    if (banners && banners.length > 0) {
-        renderBanner(elements.banner, banners[0]);
-    } else {
-        console.warn("Error: banner not found.");
-    }
+    if (banners?.length) renderBanner(elements.banner, banners[0]);
 
-    // products
     elements.products.innerHTML = "";
-
-    products.forEach(product => {
-        const card = createProductCard(product, (p) => {
-            addToCart(p);
-            updateCartUI(elements);
-        });
-
-        elements.products.appendChild(card);
+    products.forEach(p => {
+        elements.products.appendChild(createProductCard(p, addToCart, updateQty));
     });
+
+    updateCartUI(elements);
+    window.addEventListener("cartUpdated", () => updateCartUI(elements));
 }
 
 export function updateCartUI(elements) {
     const {total, count} = getTotals();
-
-    elements.total.innerText = total + " kr";
-    elements.count.innerText = count + " products";
+    elements.total.innerText = `${total} kr`;
+    elements.count.innerText = `${count} product${count === 1 ? '' : 's'}`;
 }

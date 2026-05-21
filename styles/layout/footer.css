@@ -1,8 +1,10 @@
-footer {
-    width: 100%;
-    background: #ccc;
+.footer {
     position: fixed;
-    left: 0;
     bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
     box-shadow: 0 -.2rem .5rem rgba(0, 0, 0, .1);
+    background: #ccc;
+    background: var(--color-white-250);
 }

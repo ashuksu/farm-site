@@ -1,16 +1,61 @@
 .cart-modal {
     position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .5);
     display: flex;
-    align-items: flex-end;
+    z-index: 20;
     justify-content: center;
+    align-items: flex-end;
+    background: rgba(0, 0, 0, .5);
+    inset: 0;
 }
 
 .cart-content {
-    background: white;
+    position: relative;
     max-height: 70%;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     padding: 1.5rem;
+    background: var(--color-accenet);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     overflow-y: auto;
+}
+
+.cart-content.is-confirming .cart-items-container {
+    user-select: none;
+    pointer-events: none;
+    filter: blur(4px);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.modal-title {
+    margin-top: 1rem;
+}
+
+.confirm-actions {
+    flex-direction: column;
+    margin-top: 2rem;
+    text-align: center;
+    gap: var(--gap-lg);
+}
+
+.cart-content.is-confirming .confirm-actions {
+    display: flex;
+}
+
+.cart-content.is-confirming #buy-btn {
+    display: none;
+}
+
+.action-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--gap-sm);
 }

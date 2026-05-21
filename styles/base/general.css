@@ -19,6 +19,7 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    font: 400 1.8rem/1.5 var(--font-main);
+    font: var(--font-width-sm) var(--font-size-md)/var(--line-height-md) var(--font-main);
     background: var(--color-bg);
+    color: var(--color-text);
 }

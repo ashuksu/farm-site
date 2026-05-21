@@ -1,28 +1,24 @@
 import {BASE_URL, FALLBACK_IMAGE} from "../config.js";
 
 export function renderBanner(element, banner) {
-    if (!element) return;
+    if (!element || !banner) return;
 
-    const bgImageEl = element.querySelector("[data-banner-bg-image]") || (element.hasAttribute("data-banner-bg-image") ? element : null);
-    if (bgImageEl) bgImageEl.style.backgroundImage = `url('${banner?.image || FALLBACK_IMAGE}')`;
+    const selectors = {
+        bg: "[data-banner-bg-image]",
+        title: "[data-banner-title]",
+        text: "[data-banner-text]",
+        btn: "[data-banner-button]"
+    };
 
-    const titleEl = element.querySelector("[data-banner-title]");
-    if (titleEl) titleEl.textContent = banner?.title ?? '';
+    const bgEl = element.querySelector(selectors.bg) || (element.hasAttribute("data-banner-bg-image") ? element : null);
+    if (bgEl) bgEl.style.backgroundImage = `url('${banner.image || FALLBACK_IMAGE}')`;
 
-    const textEl = element.querySelector("[data-banner-text]");
-    if (textEl) textEl.textContent = banner?.text ?? '';
+    element.querySelector(selectors.title).textContent = banner.title || "";
+    element.querySelector(selectors.text).textContent = banner.text || "";
 
-    const btnEl = element.querySelector("[data-banner-button]");
-    if (btnEl) btnEl.textContent = banner?.button ?? '';
-
-    const linkEl = element.querySelector("[data-banner-url]");
-    if (linkEl) {
-        const targetUrl = banner?.url ? (BASE_URL + banner.url) : '#';
-
-        if (linkEl.tagName === 'A') {
-            linkEl.href = targetUrl;
-        } else {
-            linkEl.onclick = () => window.location.href = targetUrl;
-        }
+    const btn = element.querySelector(selectors.btn);
+    if (btn) {
+        btn.textContent = banner.button || "";
+        btn.href = banner.url ? (BASE_URL + banner.url) : "#";
     }
 }

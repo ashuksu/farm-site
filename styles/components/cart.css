@@ -1,7 +1,7 @@
 .cart {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: 1rem;
 }
 
@@ -12,5 +12,31 @@
 }
 
 .cart-summary {
-    margin-top: 1rem;
+    margin: 1rem;
+}
+
+.cart-row {
+    border-bottom: .1rem solid #eee;
+}
+
+.cart-row__visible {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cart-row__visible:hover {
+    background: #fcfcfc;
+}
+
+.cart-row__details {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--gap-sm);
+}
+
+.cart-row__details.hidden {
+    display: none;
 }

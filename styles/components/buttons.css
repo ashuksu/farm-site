@@ -1,10 +1,44 @@
 .button {
-    background: var(--color-primary);
-    color: white;
-    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid var(--color-zero);
     padding: .8rem;
     border-radius: var(--radius-sm);
     width: 100%;
+    height: 4rem;
+    color: var(--color-accenet);
+    cursor: pointer;
+    font-size: var(--font-size-lg);
+}
+
+.button--s {
+    min-width: 4rem;
+    width: max-content;
+    height: 4rem;
+    flex-shrink: 0;
+}
+
+.button--primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.button--secondary {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.button--accent {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.button--transparent {
+    background-color: transparent;
+    border-color: var(--color-border);
+    color: var(--color-text);
 }
 
 #buy-btn {

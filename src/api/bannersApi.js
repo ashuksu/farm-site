@@ -1,4 +1,5 @@
 import {API_URL, FALLBACK_IMAGE} from "../config.js";
+import { MOCK_BANNERS } from "./mockData.js";
 
 export async function fetchBanners() {
     try {
@@ -6,7 +7,8 @@ export async function fetchBanners() {
 
         if (!res.ok) {
             console.error("Banner API error: " + res.status);
-            return null;
+            // return null;
+            return MOCK_BANNERS;
         }
 
         const json = await res.json();

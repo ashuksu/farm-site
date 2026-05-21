@@ -1,4 +1,5 @@
 import {API_URL, FALLBACK_IMAGE} from "../config.js";
+import { MOCK_PRODUCTS } from "./mockData.js";
 
 export async function fetchProducts() {
     try {
@@ -6,7 +7,8 @@ export async function fetchProducts() {
 
         if (!res.ok) {
             console.error("Products API error: " + res.status);
-            return null;
+            // return null;
+            return MOCK_PRODUCTS;
         }
 
         const json = await res.json();

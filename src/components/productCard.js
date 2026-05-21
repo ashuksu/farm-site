@@ -11,6 +11,8 @@ export function createProductCard(product, onAdd, onUpdate) {
 
         if (qty === 0) isEditing = false;
 
+        console.log(1111, product)
+
         el.innerHTML = `
             <img class="image" src="${product.img}" loading="lazy" alt="${product.name}">
             <h3>${product.name}</h3>

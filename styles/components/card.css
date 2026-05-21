@@ -1,5 +1,5 @@
 .card {
-    background-color: var(--color-white);
+    background-color: var(--color-bg);
     border-radius: var(--radius-md);
     padding: 1rem;
     text-align: center;
@@ -17,4 +17,28 @@
 .price {
     font-weight: bold;
     margin: .5rem 0;
+}
+
+.card__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--gap-sm);
+}
+
+.qty-display {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: .1rem solid #eee;
+    background: var(--color-accenet);
+    height: 100%;
+}
+
+.qty-badge {
+    font-weight: bold;
+    color: var(--color-primary);
+    min-width: 20px;
+    text-align: center;
 }

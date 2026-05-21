@@ -14,3 +14,29 @@
 .cart-summary {
     margin-top: 1rem;
 }
+
+.cart-row {
+    border-bottom: .1rem solid #eee;
+}
+
+.cart-row__visible {
+    cursor: pointer;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    transition: background 0.2s;
+}
+
+.cart-row__visible:hover {
+    background: #fcfcfc;
+}
+
+.cart-row__details {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--gap-sm);
+}
+
+.cart-row__details.hidden {
+    display: none;
+}

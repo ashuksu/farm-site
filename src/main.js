@@ -1,126 +1,99 @@
-import {initHomePage, updateCartUI, refreshAll} from "./pages/homePage.js";
-import {clearCart, getCart, updateQty, removeFromCart, getTotals} from "./store/cartStore.js";
+import {initHomePage} from "./pages/homePage.js";
+import {getCart, updateQty, removeFromCart, getTotals, clearCart} from "./store/cartStore.js";
 
 const elements = {
     header: document.getElementById("header"),
     banner: document.getElementById("main-banner"),
     products: document.getElementById("products"),
     cart: document.getElementById("cart"),
-    modal: document.getElementById("cart-modal"),
+    cartModal: document.getElementById("cart-modal"),
+    cartContent: document.querySelector(".cart-content"),
     cartItems: document.getElementById("cart-items"),
     cartTotal: document.getElementById("cart-total-modal"),
     total: document.getElementById("total"),
+    confirmBlock: document.getElementById("confirm-actions"),
+    closeCartBtn: document.getElementById("close-cart"),
     count: document.getElementById("count"),
-    buyBtn: document.getElementById("buy-btn"),
+    btnYes: document.getElementById("confirm-buy-btn-yes"),
+    btnNo: document.getElementById("confirm-buy-btn-no"),
+    buyBtn: document.getElementById("cart-btn-buy")
 };
 
-async function init() {
-    bindEvents();
-    await initHomePage(elements);
-}
+const toggleCartModal = (show) => {
+    elements.cartModal.classList.toggle("hidden", !show);
+    elements.cartModal.hidden = !show;
+    resetCheckoutState();
+    if (show) renderCart();
+};
 
-function bindEvents() {
-    window.addEventListener("scroll", () => {
-        elements.header.classList.toggle("scrolled", window.scrollY > 120);
-    });
-
-    elements.cart.addEventListener("click", openCart);
-
-    elements.modal.addEventListener("click", (e) => {
-        if (e.target === elements.modal) closeCart();
-    });
-
-    elements.buyBtn.addEventListener("click", handleBuy);
-}
-
-function openCart() {
-    renderCart();
-    elements.modal.classList.remove("hidden");
-    elements.modal.hidden = false;
-}
-
-function closeCart() {
-    elements.modal.classList.add("hidden");
-    elements.modal.hidden = true;
-}
+const resetCheckoutState = () => {
+    elements.cartContent.classList.remove("is-confirming");
+    elements.buyBtn.disabled = false;
+};
 
 function renderCart() {
     const cart = getCart();
-
-    elements.cartItems.innerHTML = "";
-
-    if (!cart.length) {
-        elements.cartItems.innerHTML = "<p>The Cart is empty</p>";
-        elements.cartTotal.innerText = "0 kr";
-        return;
-    }
+    elements.cartItems.innerHTML = cart.length ? "" : "<p>The Cart is empty</p>";
 
     cart.forEach(item => {
         const row = document.createElement("div");
         row.className = "cart-row";
         row.innerHTML = `
-            <div class="cart-row__visible" style="cursor: pointer; padding: 10px; border-bottom: 1px solid #eee;">
+            <div class="cart-row__visible">
                 <span>${item.name} x${item.qty}</span>
-                <span style="float: right;">${item.price * item.qty} kr</span>
+                <span>${item.price * item.qty} kr</span>
             </div>
-            <div class="cart-row__details hidden" hidden style="padding: 10px; background: #f9f9f9; display: flex; gap: 10px; align-items: center;">
-                <button class="btn-remove" style="background: none; border: 1px solid red; color: red;">X</button>
-                <button class="btn-m">-</button>
-                <span class="qty-val">${item.qty}</span>
-                <button class="btn-p">+</button>
+            <div class="cart-row__details hidden">
+                <button class="button button--accent button--s btn-remove">✕</button>
+                <button class="button button--secondary button--s btn-minus">-</button>
+                <strong class="button button--transparent">${item.qty}</strong>
+                <button class="button button--secondary button--s btn-plus">+</button>
             </div>
         `;
 
-        row.querySelector(".cart-row__visible").onclick = () => {
-            row.querySelector(".cart-row__details").classList.toggle("hidden");
-        };
+        const details = row.querySelector(".cart-row__details");
 
-        row.querySelector(".btn-m").onclick = () => {
-            updateQty(item.id, -1);
-            sync();
-        };
-        row.querySelector(".btn-p").onclick = () => {
-            updateQty(item.id, 1);
-            sync();
-        };
-        row.querySelector(".btn-remove").onclick = () => {
-            removeFromCart(item.id);
-            sync();
-        };
+        row.querySelector(".cart-row__visible").onclick = () => details.classList.toggle("hidden");
+        details.onclick = (e) => e.stopPropagation();
+        row.querySelector(".btn-minus").onclick = () => updateQty(item.id, -1);
+        row.querySelector(".btn-plus").onclick = () => updateQty(item.id, 1);
+        row.querySelector(".btn-remove").onclick = () => removeFromCart(item.id);
 
         elements.cartItems.appendChild(row);
     });
 
-    const {total} = getTotals();
-    elements.cartTotal.innerText = total + " kr";
+    elements.cartTotal.innerText = `${getTotals().total} kr`;
 }
 
-function sync() {
-    renderCart();
-    // updateCartUI(elements);
-    refreshAll(elements);
-    // Для полной синхронизации кнопок на главной можно вызвать initHomePage или использовать CustomEvents
-}
+document.getElementById("cart").onclick = () => toggleCartModal(true);
 
-function handleBuy() {
-    const cart = getCart();
-    if (!cart.length) return;
+elements.closeCartBtn.onclick = () => toggleCartModal(false);
 
-    // const text = cart
-    //     .map(i => `${i.name} x${i.qty}`)
-    //     .join(", ");
-    //
-    // const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
-    // alert(`You ordered:\n${text}\n\nAmount: ${total} kr`);
+elements.cartModal.onclick = (e) => {
+    if (e.target === elements.cartModal) toggleCartModal(false);
+};
 
-    const params = cart.map(i => `item=${i.id}&q=${i.qty}`).join('&');
-    const deepLink = `myapp://checkout?${params}`;
+elements.buyBtn.onclick = () => {
+    if (!getCart().length) return;
+    elements.buyBtn.disabled = true;
 
-    alert(`Deep Link:\n${deepLink}`);
+    const link = `myapp://buy?${getCart().map(i => `id=${i.id}&q=${i.qty}`).join("&")}`;
+    alert(link);
+    elements.cartContent.classList.add("is-confirming");
+};
 
-    // clearCart();
-    // sync();
-    // closeCart();
-}
+elements.btnNo.onclick = resetCheckoutState;
 
-init();
+elements.btnYes.onclick = () => {
+    clearCart();
+    toggleCartModal(false);
+    alert("Purchase completed successfully!");
+};
+
+window.addEventListener("cartUpdated", () => {
+    if (!elements.cartModal.hidden) renderCart();
+});
+
+window.addEventListener("scroll", () => elements.header.classList.toggle("scrolled", window.scrollY > 120));
+
+initHomePage(elements);

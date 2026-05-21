@@ -1,45 +1,38 @@
-let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+const STORAGE_KEY = 'cart';
+let cart = JSON.parse(sessionStorage.getItem(STORAGE_KEY)) || [];
 
-export function getCart() {
-    return cart;
-}
+const save = () => {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+    window.dispatchEvent(new CustomEvent("cartUpdated"));
+};
 
-function save() {
-    sessionStorage.setItem('cart', JSON.stringify(cart));
-}
+export const getCart = () => cart;
 
-export function addToCart(product) {
+export const addToCart = (product) => {
     const existing = cart.find(i => i.id === product.id);
     existing ? existing.qty++ : cart.push({...product, qty: 1});
     save();
-}
+};
 
-export function updateQty(productId, delta) {
+export const updateQty = (productId, delta) => {
     const item = cart.find(i => i.id === productId);
-
     if (!item) return;
-
     item.qty += delta;
+    if (item.qty <= 0) return removeFromCart(productId);
     save();
+};
 
-    if (item.qty <= 0) {
-        removeFromCart(productId);
-    }
-}
-
-export function removeFromCart(productId) {
+export const removeFromCart = (productId) => {
     cart = cart.filter(i => i.id !== productId);
     save();
-}
+};
 
-export function clearCart() {
+export const clearCart = () => {
     cart = [];
     save();
-}
+};
 
-export function getTotals() {
-    const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
-    const count = cart.length;
-
-    return {total, count};
-}
+export const getTotals = () => ({
+    total: cart.reduce((sum, i) => sum + i.price * i.qty, 0),
+    count: cart.length
+});

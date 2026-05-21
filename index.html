@@ -57,15 +57,25 @@
 <div id="cart-modal" class="cart-modal hidden" hidden>
     <div class="container">
         <div class="cart-content">
+            <button id="close-cart" class="modal-close">✕</button>
             <h2>Cart</h2>
 
-            <div id="cart-items"></div>
-
-            <div class="cart-summary">
-                <strong id="cart-total-modal">0 kr</strong>
+            <div class="cart-items-container">
+                <div id="cart-items"></div>
+                <div class="cart-summary">
+                    <strong id="cart-total-modal">0 kr</strong>
+                </div>
+                <button id="cart-btn-buy" class="button button--primary">Buy</button>
             </div>
 
-            <button id="buy-btn" class="button">Buy</button>
+
+            <div hidden id="confirm-actions" class="confirm-actions">
+                <p>Make a purchase?</p>
+                <div class="action-block">
+                    <button id="confirm-buy-btn-no" class="button button--accent">No</button>
+                    <button id="confirm-buy-btn-yes" class="button button--primary">Yes</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -8,9 +8,49 @@
 }
 
 .cart-content {
-    background: white;
+    background: var(--color-accenet);
     max-height: 70%;
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     padding: 1.5rem;
     overflow-y: auto;
+    position: relative;
+}
+
+.cart-content.is-confirming .cart-items-container {
+    filter: blur(4px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.confirm-actions {
+    flex-direction: column;
+    gap: var(--gap-lg);
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.cart-content.is-confirming .confirm-actions {
+    display: flex;
+}
+
+.cart-content.is-confirming #buy-btn {
+    display: none;
+}
+
+.action-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-sm);
 }

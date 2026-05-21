@@ -1,33 +1,37 @@
 @import url('./../components/logo.css');
 
 .header {
-    background: #2e7d32;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: var(--header-height, 8.5rem);
+    box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .1);
+    background: var(--color-bg-heder);
     color: var(--color-accenet);
     text-align: center;
-    position: sticky;
-    top: 0;
-    box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .1);
-    padding-block: 1rem;
-    height: var(--header-height, 11.5rem);
     transition: height .3s ease, background-color .3s ease;
     overflow: hidden;
+    padding-block: 1rem;
 }
 
 .header.scrolled {
-    --header-height: 7rem;
+    --header-height: 5.5rem;
 
-    background-color: rgba(46, 125, 50, .9);
+    background-color: var(--color-bg-heder-scrolled);
 }
 
 .header__row {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
 }
 
 .header__title {
     margin: 0 0 1rem;
+    line-height: 1;
 }
 
 .header__text {

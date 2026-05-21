@@ -94,6 +94,6 @@ window.addEventListener("cartUpdated", () => {
     if (!elements.cartModal.hidden) renderCart();
 });
 
-window.addEventListener("scroll", () => elements.header.classList.toggle("scrolled", window.scrollY > 120));
+window.addEventListener("scroll", () => elements.header.classList.toggle("scrolled", window.scrollY > 80));
 
 initHomePage(elements);

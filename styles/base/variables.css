@@ -48,6 +48,9 @@
     --color-accent-hover: var(--color-red-100);
 
     --color-bg: var(--color-white-100);
+    --color-bg-heder: var(--color-primary);
+    --color-bg-heder-scrolled: color-mix(in srgb, var(--color-bg-heder) 90%, transparent);
+    --color-bg-footer: var(--color-white-250);
     --color-accenet: var(--color-white-50);
     --color-soft: var(--color-white-150);
     --color-text: var(--color-black-50);

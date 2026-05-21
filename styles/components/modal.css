@@ -1,43 +1,48 @@
 .cart-modal {
     position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .5);
     display: flex;
-    align-items: flex-end;
+    z-index: 20;
     justify-content: center;
+    align-items: flex-end;
+    background: rgba(0, 0, 0, .5);
+    inset: 0;
 }
 
 .cart-content {
-    background: var(--color-accenet);
-    max-height: 70%;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    padding: 1.5rem;
-    overflow-y: auto;
     position: relative;
+    max-height: 70%;
+    padding: 1.5rem;
+    background: var(--color-accenet);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    overflow-y: auto;
 }
 
 .cart-content.is-confirming .cart-items-container {
-    filter: blur(4px);
-    pointer-events: none;
     user-select: none;
+    pointer-events: none;
+    filter: blur(4px);
 }
 
 .modal-close {
     position: absolute;
     top: 15px;
     right: 15px;
+    z-index: 10;
     background: none;
     border: none;
-    font-size: 24px;
     cursor: pointer;
-    z-index: 10;
+    font-size: 24px;
+}
+
+.modal-title {
+    margin-top: 1rem;
 }
 
 .confirm-actions {
     flex-direction: column;
-    gap: var(--gap-lg);
-    text-align: center;
     margin-top: 2rem;
+    text-align: center;
+    gap: var(--gap-lg);
 }
 
 .cart-content.is-confirming .confirm-actions {
@@ -50,7 +55,7 @@
 
 .action-block {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     gap: var(--gap-sm);
 }

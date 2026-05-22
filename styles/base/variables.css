@@ -61,7 +61,7 @@
 
     --color-bg: var(--color-white-175);
     --color-bg-card: var(--color-white-50);
-    --color-bg-header: var(--color-primary);
+    --color-bg-header: var(--color-blue-225);
     --color-bg-header-scrolled: color-mix(in srgb, var(--color-bg-header) 90%, transparent);
     --color-bg-footer: var(--color-white-250);
     --color-accenet: var(--color-white-50);

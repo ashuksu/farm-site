@@ -1,5 +1,6 @@
-/* Palette: Scandinavian Design Tokens */
 :root {
+    /* Palette: Scandinavian Design Tokens */
+
     /* White & Neutrals */
     --color-white-50: #FFFFFF;  /* Pure Snow */
     --color-white-100: #F5F5F0; /* Stockholm White (Stockholmsvit) */
@@ -46,10 +47,8 @@
     --color-black-50: #333333;  /* Wet Asphalt */
     --color-black-100: #222222; /* Charcoal */
     --color-black-150: #1A1A1B; /* Dark Slate (Svart Skiffer) */
-}
 
-:root {
-    /* colors */
+    /* Theme */
     --color-zero: transparent;
 
     --color-primary: var(--color-green-150);
@@ -61,8 +60,8 @@
 
     --color-bg: var(--color-white-175);
     --color-bg-card: var(--color-white-50);
-    --color-bg-heder: var(--color-primary);
-    --color-bg-heder-scrolled: color-mix(in srgb, var(--color-bg-heder) 90%, transparent);
+    --color-bg-header: var(--color-primary);
+    --color-bg-header-scrolled: color-mix(in srgb, var(--color-bg-header) 90%, transparent);
     --color-bg-footer: var(--color-white-250);
     --color-accenet: var(--color-white-50);
     --color-soft: var(--color-white-150);
@@ -81,23 +80,27 @@
     --gap-lg: 1.2rem;
     --gap-xl: 2rem;
 
+    --font-size-xs: 1.2rem;
     --font-size-sm: 1.4rem;
     --font-size-md: 1.8rem;
     --font-size-lg: 2.8rem;
     --font-size-xl: 3.2rem;
+    --font-size-xxl: 4.2rem;
 
-    --font-width-sm: 400;
-    --font-width-md: 500;
-    --font-width-lg: 800;
+    --font-weight-sm: 400;
+    --font-weight-md: 500;
+    --font-weight-lg: 600;
+    --font-weight-xl: 700;
 
-    --line-height-sm: 1rem;
-    --line-height-md: 1.5rem;
-    --line-height-lg: 1.8rem;
+
+    --line-height-sm: 1.2;
+    --line-height-md: 1.5;
+    --line-height-lg: 1.8;
 
     --box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05), 0 24px 48px -12px rgba(34, 36, 42, 0.16), 0 8px 16px -4px rgba(22, 22, 22, 0.08);
 
-    --font-main: "source sans pro", Arial, Helvetica, sans-serif;
-    --font-accent: "barlow condensed", Arial, Helvetica, sans-serif;
+    --font-main: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    --font-accent: "Barlow Condensed", Arial, Helvetica, sans-serif;
 
     --grid-columns: 1;
 }

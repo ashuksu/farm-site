@@ -1,3 +1,9 @@
+/* Base Styles */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 html {
     padding: 0;
     margin: 0;
@@ -24,38 +30,40 @@ body {
     font: var(--font-weight-sm) var(--font-size-md)/var(--line-height-md) var(--font-main);
 }
 
+/* Typography Components */
+
 .title-hero {
     margin: var(--title-hero-margin, 0);
-    color: var(--title-hero-color, var(--color-text-bold));
+    color: var(--title-hero-color, var(--color-accenet));
     font-family: var(--title-hero-font-family, var(--font-accent));
     font-size: var(--title-hero-font-size, clamp(5.4rem, 5.4vw, 9.2rem));
-    font-weight: var(--title-hero-font-weight, 700);
-    line-height: var(--title-hero-line-height, 1.1);
+    font-weight: var(--title-hero-font-weight, var(--font-weight-xl));
+    line-height: var(--title-hero-line-height, var(--line-height-sm));
 }
 
 .title-section {
-    margin: var(--title-section-margin, 0 0 var(--gap-xl));
+    margin: var(--title-section-margin, 0 0 var(--gap-sm));
     color: var(--title-section-color, var(--color-text-bold));
     font-family: var(--title-section-font-family, var(--font-accent));
-    font-size: var(--title-section-font-size, var(--font-size-xl));
-    font-weight: var(--title-section-font-weight, 600);
-    line-height: var(--title-section-line-height, 1.2);
+    font-size: var(--title-section-font-size, var(--font-size-xxl));
+    font-weight: var(--title-section-font-weight, var(--font-weight-xl));
+    line-height: var(--title-section-line-height, var(--line-height-sm));
+}
+
+.sub-title {
+    margin: var(--sub-title-margin, 0 0 var(--gap-md));
+    color: var(--sub-title-color, var(--color-accenet));
+    font-family: var(--sub-title-font-family, var(--font-accent));
+    font-size: var(--sub-title-font-size, var(--font-size-xxl));
+    font-weight: var(--sub-title-font-weight, var(--font-weight-sm));
+    line-height: var(--sub-title-line-height, var(--line-height-sm));
 }
 
 .title-card {
     margin: var(--title-card-margin, 0 0 var(--gap-xl));
-    color: var(--title-card-color, var(--color-text-bold));
+    color: var(--title-card-color, var(--color-blue-225));
     font-family: var(--title-card-font-family, var(--font-accent));
     font-size: var(--title-card-font-size, var(--font-size-lg));
-    font-weight: var(--title-card-font-weight, 600);
-    line-height: var(--title-card-line-height, 1.2);
-}
-
-.sub-title {
-    margin: var(--sub-title-marginб 0);
-    color: var(--sub-title-colorб var(--color-text-bold));
-    font-family: var(--sub-title-font-familyб var(--font-accent));
-    font-size: var(--sub-title-font-sizeб var(--font-size-md));
-    font-weight: var(--sub-title-font-weightб 500);
-    line-height: var(--sub-title-line-heightб 1.2);
+    font-weight: var(--title-card-font-weight, var(--font-weight-lg));
+    line-height: var(--title-card-line-height, var(--line-height-sm));
 }

@@ -10,7 +10,9 @@ export async function initHomePage(elements) {
     if (banners?.length) renderBanner(elements.banner, banners[0]);
 
     elements.products.innerHTML = "";
-    products.forEach(p => {
+
+    const safeProducts = products ?? [];
+    safeProducts.forEach(p => {
         elements.products.appendChild(createProductCard(p, addToCart, updateQty));
     });
 

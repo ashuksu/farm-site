@@ -7,8 +7,10 @@ export async function fetchBanners() {
 
         if (!res.ok) {
             console.error("Banner API error: " + res.status);
-            // return null;
-            return MOCK_BANNERS;
+            return null;
+
+            // testing
+            // return MOCK_BANNERS;
         }
 
         const json = await res.json();
@@ -27,6 +29,9 @@ export async function fetchBanners() {
             }));
     } catch (err) {
         console.error("Error loading banners:", err);
-        return null;
+        // return null;
+
+        // testing
+        return MOCK_BANNERS;
     }
 }

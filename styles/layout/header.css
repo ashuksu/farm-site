@@ -8,7 +8,7 @@
     width: 100%;
     height: var(--header-height, 10rem);
     box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .1);
-    background: var(--color-bg-header);
+    background: var(--color-bg-primary);
     color: var(--color-accenet);
     text-align: center;
     transition: height .3s ease, background-color .3s ease;
@@ -19,7 +19,7 @@
 .header.scrolled {
     --header-height: 7rem;
 
-    background-color: var(--color-bg-header-scrolled);
+    background-color: var(--color-bg-primary-muted);
 }
 
 .header__row {

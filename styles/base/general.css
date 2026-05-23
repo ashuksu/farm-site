@@ -67,3 +67,10 @@ body {
     font-weight: var(--title-card-font-weight, var(--font-weight-lg));
     line-height: var(--title-card-line-height, var(--line-height-sm));
 }
+
+.suffix {
+    font-family: var(--suffix-font-family, inherit);
+    font-size: var(--suffix-font-size, .8em);
+    font-weight: var(--suffix-font-weight, inherit);
+    line-height: var(--suffix-line-height, inherit);
+}

@@ -30,6 +30,14 @@
                 <img src="./assets/images/logo.svg" alt="Logo">
             </a>
             <h1 class="header__title title-card">Farmer's Market</h1>
+            <div id="cart" class="cart" hidden>
+                <img src="./assets/icons/cart-0.svg" alt="Empty Cart Icon" loading="lazy" >
+<!--                <img src="./assets/icons/cart-1.svg" alt="Filled Cart Icon" loading="lazy" >-->
+                <div class="cart__info">
+                    <span id="count" class="cart__count"></span>
+                    <span id="total" class="cart__total"></span>
+                </div>
+            </div>
         </div>
         <p class="header__text">Fresh produce every day</p>
     </div>
@@ -41,7 +49,7 @@
             <div class="main-banner__inner">
                 <p data-banner-title class="title-hero main-banner__title"></p>
                 <p data-banner-text class="sub-title main-banner__text"></p>
-<!--                <a href="#" data-banner-url data-banner-button class="button main-banner__button"></a>-->
+                <!--                <a href="#" data-banner-url data-banner-button class="button main-banner__button"></a>-->
             </div>
         </div>
     </section>
@@ -53,10 +61,7 @@
 
 <footer id="footer" class="footer">
     <div class="container">
-        <div id="cart" class="cart">
-            <span id="count">0 products</span>
-            <span id="total">0 kr</span>
-        </div>
+        <p>&copy; 2023 Farmer's Market. All rights reserved.</p>
     </div>
 </footer>
 

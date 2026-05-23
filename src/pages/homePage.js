@@ -22,6 +22,6 @@ export async function initHomePage(elements) {
 
 export function updateCartUI(elements) {
     const {total, count} = getTotals();
-    elements.total.innerText = `${total} kr`;
-    elements.count.innerText = `${count} product${count === 1 ? '' : 's'}`;
+    elements.total.innerHTML = total > 0 ? `${total} <span class="suffix">kr</span>` : '';
+    elements.count.innerHTML = count > 0 ? `${count} <span class="suffix">pcs</span>` : '';
 }

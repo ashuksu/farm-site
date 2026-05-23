@@ -6,7 +6,7 @@ export const MOCK_BANNERS = [
         text: "text first banner",
         button: "qwerty",
         url: "123456",
-        image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1280&q=80"
+        image: "./assets/images/banners/banner-1.webp"
     }
 ];
 
@@ -15,36 +15,36 @@ export const MOCK_PRODUCTS = [
         id: 1,
         name: "Tomatoes",
         price: 120.00,
-        img: "./assets/images/products/tomatoes.jpg",
+        img: "./assets/images/products/tomatoes.webp",
     },
     {
         id: 2,
         name: "Potatoes",
         price: 60.00,
-        img: "./assets/images/products/potatoes.jpg",
+        img: "./assets/images/products/potatoes.webp",
     },
     {
         id: 3,
         name: "Milk",
         price: 90.00,
-        img: "./assets/images/products/milk.jpg",
+        img: "./assets/images/products/milk.webp",
     },
     {
         id: 4,
         name: "Eggs",
         price: 150.51,
-        img: "./assets/images/products/eggs.jpg",
+        img: "./assets/images/products/eggs.webp",
     },
     {
         id: 5,
         name: "Honey",
         price: 300.00,
-        img: "./assets/images/products/honey.jpg"
+        img: "./assets/images/products/honey.webp"
     },
     {
         id: 6,
         name: "Cheese 🧀",
         price: 1.00,
-        img: "./assets/images/products/cheese.jpg"
+        img: "./assets/images/products/cheese.webp"
     }
 ];

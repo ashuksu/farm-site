@@ -5,15 +5,21 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 38vw;
-    max-height: 66rem;
     padding-top: 3rem;
     padding-bottom: calc(clamp(3.5rem, 5vw, 7rem) + 3rem);
     margin-bottom: var(--banner-overlap);
     box-shadow: 0 calc(var(--banner-overlap) * -1) 0 0 var(--color-green-35);
+    background-position: right bottom;
     background-repeat: no-repeat;
     background-size: cover;
     isolation: isolate;
+}
+
+@media (min-width: 768px) {
+    .main-banner {
+        height: 40vw;
+        max-height: 75rem;
+    }
 }
 
 .main-banner::after {

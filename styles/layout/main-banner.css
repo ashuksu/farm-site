@@ -1,0 +1,39 @@
+.main-banner {
+    --banner-overlap: clamp(-7rem, -5vw, -3.5rem);
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 38vw;
+    max-height: 66rem;
+    padding-top: 3rem;
+    padding-bottom: calc(clamp(3.5rem, 5vw, 7rem) + 3rem);
+    margin-bottom: var(--banner-overlap);
+    box-shadow: 0 calc(var(--banner-overlap) * -1) 0 0 var(--color-green-35);
+    background-repeat: no-repeat;
+    background-size: cover;
+    isolation: isolate;
+}
+
+.main-banner::after {
+    position: absolute;
+    display: block;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-green-45);
+    mix-blend-mode: multiply;
+    opacity: .4;
+    content: '';
+    inset: 0;
+}
+
+.main-banner__inner {
+    max-width: 70rem;
+}
+
+.main-banner__title,
+.main-banner__text {
+    margin-bottom: 0.2em;
+}

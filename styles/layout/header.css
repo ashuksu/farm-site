@@ -2,8 +2,6 @@
 
 .header {
     position: fixed;
-    top: 0;
-    left: 0;
     z-index: 10;
     width: 100%;
     height: var(--header-height, 10rem);
@@ -13,6 +11,7 @@
     text-align: center;
     transition: height .3s ease, background-color .3s ease;
     overflow: hidden;
+    inset: 0;
     padding-block: 1rem;
 }
 
@@ -26,8 +25,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
     margin: 0 0 .5rem;
+    gap: 1rem;
 }
 
 .header__title {

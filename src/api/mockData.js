@@ -2,8 +2,8 @@ export const MOCK_BANNERS = [
     {
         id: 1,
         order: 1,
-        title: "first banner",
-        text: "text first banner",
+        title: "Fresh Food, Naturally",
+        text: "Discover fresh vegetables, fruit, dairy products and artisan goods from local farms, carefully selected for quality and seasonality.",
         button: "qwerty",
         url: "123456",
         image: "./assets/images/banners/banner-1.webp"

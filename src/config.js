@@ -5,4 +5,4 @@ export const BASE_URL = window.location.pathname.substring(
     window.location.pathname.lastIndexOf('/') + 1
 );
 
-export const FALLBACK_IMAGE = BASE_URL + "fallback.jpg";
+export const FALLBACK_IMAGE = BASE_URL + "assets/images/fallback.jpg";

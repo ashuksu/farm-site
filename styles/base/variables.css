@@ -19,6 +19,7 @@
     --color-blue-250: #112930; /* Abyss Blue */
 
     /* Nature Greens */
+    --color-green-15: #E3F5EC; /* Frozen Mint */
     --color-green-25: #E5F4EB; /* Glacier Mint */
     --color-green-35: #C4EEDA; /* Pale Lichen */
     --color-green-40: #BAF0D9; /* Sage Sorbet */
@@ -61,13 +62,14 @@
 
     --color-bg: var(--color-white-175);
     --color-bg-card: var(--color-white-50);
-    --color-bg-header: var(--color-blue-225);
-    --color-bg-header-scrolled: color-mix(in srgb, var(--color-bg-header) 90%, transparent);
+    --color-bg-primary: var(--color-blue-225);
+    --color-bg-primary-muted: color-mix(in srgb, var(--color-bg-primary) 90%, transparent);
     --color-bg-footer: var(--color-white-250);
     --color-accenet: var(--color-white-100);
     --color-soft: var(--color-white-150);
     --color-text: var(--color-black-50);
     --color-text-bold: var(--color-black-100);
+    --color-text-primary    : var(--color-blue-225);
     --color-border: var(--color-white-200);
     --color-border-hoder: var(--color-white-250);
 

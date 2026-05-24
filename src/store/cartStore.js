@@ -33,6 +33,6 @@ export const clearCart = () => {
 };
 
 export const getTotals = () => ({
-    total: cart.reduce((sum, i) => sum + i.price * i.qty, 0),
+    total: Math.round(cart.reduce((sum, i) => sum + i.price * i.qty, 0)),
     count: cart.length
 });

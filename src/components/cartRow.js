@@ -25,7 +25,7 @@ export function createCartRow(item) {
         row.innerHTML = `
             <div class="cart-row__visible">
                 <span>${currentItem.name} x${currentItem.qty}</span>
-                <span>${currentItem.price * currentItem.qty} kr</span>
+                <span>${Math.round(currentItem.price * currentItem.qty)} kr</span>
             </div>
             <div class="cart-row__details ${editing ? "" : "hidden"}">
                 <button class="button button--accent button--s btn-remove">✕</button>

@@ -15,7 +15,7 @@ export function createProductCard(product, onAdd, onUpdate) {
             <img class="image" src="${product.img}" loading="lazy" alt="${product.name}">
             <div class="card__inner">
                 <h3 class="title-card">${product.name}</h3>
-                <div class="price">${product.price} kr</div>
+                <div class="price">${Math.round(product.price)} kr</div>
                 <div class="card__actions">
                     ${!isEditing ? `
                         ${qty === 0

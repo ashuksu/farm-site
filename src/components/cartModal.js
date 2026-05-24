@@ -29,7 +29,7 @@ export function initCartModal(elements) {
             });
         }
 
-        elements.cartTotal.innerText = `${getTotals().total} kr`;
+        elements.cartTotal.innerText = `${Math.round(getTotals().total)} kr`;
     };
 
     const toggle = (show) => {

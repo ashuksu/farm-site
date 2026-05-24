@@ -25,4 +25,5 @@ export function updateCartUI(elements) {
     elements.total.innerHTML = total > 0 ? `${total} <span class="suffix">kr</span>` : '';
     elements.count.innerHTML = count > 0 ? `${count} <span class="suffix">pcs</span>` : '';
     elements.cartIcon.src = getCart().length > 0 ? "./assets/icons/cart-1.svg" : "./assets/icons/cart-0.svg";
+    elements.cart.classList.toggle("is-disabled", getCart().length === 0);
 }

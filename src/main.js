@@ -21,9 +21,12 @@ const elements = {
 };
 
 const toggleCartModal = (show) => {
+    if (show && getCart().length === 0) return;
+
     elements.cartModal.classList.toggle("is-open", show);
     document.body.classList.toggle("modal-is-open", show);
     resetCheckoutState();
+
     if (show) renderCart();
 };
 

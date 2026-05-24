@@ -31,8 +31,7 @@
             </a>
             <h1 class="header__title title-card">Farmer's Market</h1>
             <div id="cart" class="cart" hidden>
-                <img src="./assets/icons/cart-0.svg" alt="Empty Cart Icon" loading="lazy" >
-<!--                <img src="./assets/icons/cart-1.svg" alt="Filled Cart Icon" loading="lazy" >-->
+                <img id="cart-icon" src="./assets/icons/cart-0.svg" alt="Cart Icon" loading="lazy">
                 <div class="cart__info">
                     <span id="count" class="cart__count"></span>
                     <span id="total" class="cart__total"></span>
@@ -65,27 +64,25 @@
     </div>
 </footer>
 
-<div id="cart-modal" class="cart-modal hidden" hidden>
-    <div class="container">
-        <div class="cart-content">
-            <button id="close-cart" class="modal-close">✕</button>
-            <h2 class="modal-title">Cart</h2>
+<div id="cart-modal" class="cart-modal" hidden>
+    <div class="cart-content">
+        <button id="close-cart" class="modal-close">✕</button>
+        <h2 class="modal-title">Cart</h2>
 
-            <div class="cart-items-container">
-                <div id="cart-items"></div>
-                <div class="cart-summary">
-                    <strong id="cart-total-modal">0 kr</strong>
-                </div>
-                <button id="cart-btn-buy" class="button button--primary">Buy</button>
+        <div class="cart-items-container">
+            <div id="cart-items"></div>
+            <div class="cart-summary">
+                <strong id="cart-total-modal">0 kr</strong>
             </div>
+            <button id="cart-btn-buy" class="button button--primary">Buy</button>
+        </div>
 
 
-            <div hidden id="confirm-actions" class="confirm-actions">
-                <p>Make a purchase?</p>
-                <div class="action-block">
-                    <button id="confirm-buy-btn-no" class="button button--accent">No</button>
-                    <button id="confirm-buy-btn-yes" class="button button--primary">Yes</button>
-                </div>
+        <div hidden id="confirm-actions" class="confirm-actions">
+            <p>Make a purchase?</p>
+            <div class="action-block">
+                <button id="confirm-buy-btn-no" class="button button--accent">No</button>
+                <button id="confirm-buy-btn-yes" class="button button--primary">Yes</button>
             </div>
         </div>
     </div>

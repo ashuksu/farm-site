@@ -6,6 +6,7 @@ const elements = {
     banner: document.getElementById("main-banner"),
     products: document.getElementById("products"),
     cart: document.getElementById("cart"),
+    cartIcon: document.getElementById("cart-icon"),
     cartModal: document.getElementById("cart-modal"),
     cartContent: document.querySelector(".cart-content"),
     cartItems: document.getElementById("cart-items"),
@@ -91,7 +92,9 @@ elements.btnYes.onclick = () => {
 };
 
 window.addEventListener("cartUpdated", () => {
-    if (!elements.cartModal.hidden) renderCart();
+    if (elements.cartModal.classList.contains("is-open")) {
+        renderCart();
+    }
 });
 
 window.addEventListener("scroll", () => elements.header.classList.toggle("scrolled", window.scrollY > 80));

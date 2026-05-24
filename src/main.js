@@ -20,8 +20,8 @@ const elements = {
 };
 
 const toggleCartModal = (show) => {
-    elements.cartModal.classList.toggle("hidden", !show);
-    elements.cartModal.hidden = !show;
+    elements.cartModal.classList.toggle("is-open", show);
+    document.body.classList.toggle("modal-is-open", show);
     resetCheckoutState();
     if (show) renderCart();
 };

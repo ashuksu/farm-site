@@ -1,5 +1,6 @@
 import {initHomePage} from "./pages/homePage.js";
 import {getCart, updateQty, removeFromCart, getTotals, clearCart} from "./store/cartStore.js";
+import {createCartRow, resetActiveCartRow} from "./components/cartRow.js";
 
 const elements = {
     header: document.getElementById("header"),
@@ -8,7 +9,7 @@ const elements = {
     cart: document.getElementById("cart"),
     cartIcon: document.getElementById("cart-icon"),
     cartModal: document.getElementById("cart-modal"),
-    cartContent: document.querySelector(".cart-content"),
+    cartContent: document.getElementById("cart-content"),
     cartItems: document.getElementById("cart-items"),
     cartTotal: document.getElementById("cart-total-modal"),
     total: document.getElementById("total"),
@@ -21,13 +22,15 @@ const elements = {
 };
 
 const toggleCartModal = (show) => {
-    if (show && getCart().length === 0) return;
-
     elements.cartModal.classList.toggle("is-open", show);
     document.body.classList.toggle("modal-is-open", show);
     resetCheckoutState();
 
-    if (show) renderCart();
+    if (show) {
+        renderCart();
+    } else {
+        resetActiveCartRow();
+    }
 };
 
 const resetCheckoutState = () => {
@@ -37,34 +40,15 @@ const resetCheckoutState = () => {
 
 function renderCart() {
     const cart = getCart();
-    elements.cartItems.innerHTML = cart.length ? "" : "<p>The Cart is empty</p>";
+    elements.cartItems.innerHTML = "";
 
-    cart.forEach(item => {
-        const row = document.createElement("div");
-        row.className = "cart-row";
-        row.innerHTML = `
-            <div class="cart-row__visible">
-                <span>${item.name} x${item.qty}</span>
-                <span>${item.price * item.qty} kr</span>
-            </div>
-            <div class="cart-row__details hidden">
-                <button class="button button--accent button--s btn-remove">✕</button>
-                <button class="button button--secondary button--s btn-minus">-</button>
-                <strong class="button button--transparent">${item.qty}</strong>
-                <button class="button button--secondary button--s btn-plus">+</button>
-            </div>
-        `;
-
-        const details = row.querySelector(".cart-row__details");
-
-        row.querySelector(".cart-row__visible").onclick = () => details.classList.toggle("hidden");
-        details.onclick = (e) => e.stopPropagation();
-        row.querySelector(".btn-minus").onclick = () => updateQty(item.id, -1);
-        row.querySelector(".btn-plus").onclick = () => updateQty(item.id, 1);
-        row.querySelector(".btn-remove").onclick = () => removeFromCart(item.id);
-
-        elements.cartItems.appendChild(row);
-    });
+    if (!cart.length) {
+        elements.cartItems.innerHTML = "<p>The Cart is empty</p>";
+    } else {
+        cart.forEach(item => {
+            elements.cartItems.appendChild(createCartRow(item));
+        });
+    }
 
     elements.cartTotal.innerText = `${getTotals().total} kr`;
 }
@@ -95,9 +79,7 @@ elements.btnYes.onclick = () => {
 };
 
 window.addEventListener("cartUpdated", () => {
-    if (elements.cartModal.classList.contains("is-open")) {
-        renderCart();
-    }
+    elements.cartTotal.innerText = `${getTotals().total} kr`;
 });
 
 window.addEventListener("scroll", () => elements.header.classList.toggle("scrolled", window.scrollY > 80));

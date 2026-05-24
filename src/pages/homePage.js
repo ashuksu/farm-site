@@ -20,7 +20,7 @@ export async function initHomePage(elements) {
     window.addEventListener("cartUpdated", () => updateCartUI(elements));
 }
 
-export function updateCartUI(elements) {
+export function     updateCartUI(elements) {
     const {total, count} = getTotals();
     elements.total.innerHTML = total > 0 ? `${total} <span class="suffix">kr</span>` : '';
     elements.count.innerHTML = count > 0 ? `${count} <span class="suffix">pcs</span>` : '';

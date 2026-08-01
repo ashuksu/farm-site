@@ -6,21 +6,20 @@
 }
 
 main {
-    padding-block: 6.6rem 5rem;
+    padding-block: 10rem 5rem;
     position: relative;
     z-index: 1;
 }
 
 main::before {
     position: absolute;
-    top: 0;
-    left: 0;
     display: block;
     z-index: -1;
     width: 100%;
-    height: 8.5rem;
+    height: 10rem;
     background-color: var(--color-bg-primary);
     content: "";
+    inset: 0;
 }
 
 @media (min-width: 480px) {

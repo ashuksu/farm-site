@@ -7,8 +7,10 @@ export async function fetchProducts() {
 
         if (!res.ok) {
             console.error("Products API error: " + res.status);
-            // return null;
-            return MOCK_PRODUCTS;
+            return null;
+
+            // testing
+            // return MOCK_BANNERS;
         }
 
         const json = await res.json();
@@ -25,6 +27,9 @@ export async function fetchProducts() {
             }));
     } catch (err) {
         console.error("Error loading products:", err);
-        return null;
+        // return null;
+
+        // testing
+        return MOCK_PRODUCTS;
     }
 }

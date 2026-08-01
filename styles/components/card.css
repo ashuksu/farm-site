@@ -1,44 +1,48 @@
 .card {
-    background-color: var(--color-bg);
-    border-radius: var(--radius-md);
-    padding: 1rem;
-    text-align: center;
-    box-shadow: var(--shadow-sm);
+    flex-basis: initial;
+    margin: 0;
+    box-shadow: var(--box-shadow);
+    background-color: var(--color-bg-card);
+    border-radius: var(--radius-lg);
 }
 
 .image {
     display: block;
     width: 100%;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     object-fit: cover;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 4 / 3;
+}
+
+.card__inner {
+    flex-grow: 1;
+    padding: 3rem;
+    border-top: 1rem solid var(--color-green-45);
 }
 
 .price {
-    font-weight: bold;
     margin: .5rem 0;
+    font-weight: bold;
 }
 
 .card__actions {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: var(--gap-sm);
 }
 
 .qty-display {
     flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    border: .1rem solid #eee;
-    background: var(--color-accenet);
-    height: 100%;
+    cursor: auto;
 }
 
 .qty-badge {
-    font-weight: bold;
-    color: var(--color-primary);
-    min-width: 20px;
-    text-align: center;
+    aspect-ratio: 1 / 1;
+    cursor: auto;
+}
+
+.btn-minus,
+.btn-plus {
+    aspect-ratio: 1 / 1;
 }

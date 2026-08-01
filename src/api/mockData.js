@@ -13,38 +13,38 @@ export const MOCK_BANNERS = [
 export const MOCK_PRODUCTS = [
     {
         id: 1,
-        name: "Помидоры",
+        name: "Tomatoes",
         price: 120.00,
-        img: "https://images.unsplash.com/photo-1595855759920-86582396756a?auto=format&fit=crop&w=400&q=80"
+        img: "./assets/images/products/tomatoes.jpg",
     },
     {
         id: 2,
-        name: "Картофель",
+        name: "Potatoes",
         price: 60.00,
-        img: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=400&q=80"
+        img: "./assets/images/products/potatoes.jpg",
     },
     {
         id: 3,
-        name: "Молоко",
+        name: "Milk",
         price: 90.00,
-        img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=400&q=80"
+        img: "./assets/images/products/milk.jpg",
     },
     {
         id: 4,
-        name: "Яйца",
+        name: "Eggs",
         price: 150.51,
-        img: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?auto=format&fit=crop&w=400&q=80"
+        img: "./assets/images/products/eggs.jpg",
     },
     {
         id: 5,
-        name: "Мёд",
+        name: "Honey",
         price: 300.00,
-        img: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=400&q=80"
+        img: "./assets/images/products/honey.jpg"
     },
     {
         id: 6,
-        name: "Сыр 🧀",
+        name: "Cheese 🧀",
         price: 1.00,
-        img: "https://images.unsplash.com/photo-1486297678162-ad2a14b34897?auto=format&fit=crop&w=400&q=80"
+        img: "./assets/images/products/cheese.jpg"
     }
 ];

@@ -30,6 +30,11 @@ body {
     font: var(--font-weight-sm) var(--font-size-md)/var(--line-height-md) var(--font-main);
 }
 
+body.modal-is-open {
+    overflow: hidden;
+    touch-action: none;
+}
+
 /* Typography Components */
 
 .title-hero {

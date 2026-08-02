@@ -15,6 +15,11 @@
     transform: translateY(-50%);
 }
 
+.cart.is-disabled {
+    cursor: default;
+    pointer-events: none;
+}
+
 .cart img {
     display: block;
     width: 100%;
@@ -33,12 +38,6 @@
     align-items: flex-end;;
     width: max-content;
     transform: translateY(-50%);
-}
-
-.cart__count {
-}
-
-.cart__total {
 }
 
 .cart-item {

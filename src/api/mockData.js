@@ -14,37 +14,37 @@ export const MOCK_PRODUCTS = [
     {
         id: 1,
         name: "Tomatoes",
-        price: 120.00,
+        price: 120,
         img: "./assets/images/products/tomatoes.webp",
     },
     {
         id: 2,
         name: "Potatoes",
-        price: 60.00,
+        price: 60,
         img: "./assets/images/products/potatoes.webp",
     },
     {
         id: 3,
         name: "Milk",
-        price: 90.00,
+        price: 90,
         img: "./assets/images/products/milk.webp",
     },
     {
         id: 4,
         name: "Eggs",
-        price: 150.51,
+        price: 150,
         img: "./assets/images/products/eggs.webp",
     },
     {
         id: 5,
         name: "Honey",
-        price: 300.00,
+        price: 300,
         img: "./assets/images/products/honey.webp"
     },
     {
         id: 6,
         name: "Cheese 🧀",
-        price: 1.00,
+        price: 10,
         img: "./assets/images/products/cheese.webp"
     }
 ];
